@@ -5,7 +5,7 @@ PROJECT("luasocket")
 INCLUDE(ExternalProject)
 FIND_PACKAGE(PythonInterp 2.7 REQUIRED)
 
-SET(VERSION_EXTERNAL "3.0.0")
+SET(VERSION_EXTERNAL "3.1.0")
 SET(VERSION_PACKAGE  "1")
 SET(PROJECT_VERSION  "${VERSION_EXTERNAL}.${VERSION_PACKAGE}")
 
@@ -37,8 +37,8 @@ IF((BUILDCFG_ONLY_JONCHKI_CFG STREQUAL "OFF"))
 
 	ExternalProject_Add(TARGET_luasocket
 	                    PREFIX ${CMAKE_CURRENT_BINARY_DIR}/luasocket
-	                    URL ${CMAKE_CURRENT_SOURCE_DIR}/luasocket-3.0.0.tar.gz
-	                    URL_HASH SHA1=142fbdb3f6413975bea431b9507bb7f993ea7fb3
+	                    URL ${CMAKE_CURRENT_SOURCE_DIR}/luasocket-${VERSION_EXTERNAL}.tar.gz
+	                    URL_HASH SHA1=d0316bae7dfee01ae8c6eb5249b28b1887e24e65
 	                    PATCH_COMMAND "${PYTHON_EXECUTABLE}" ${CMAKE_HOME_DIRECTORY}/cmake/tools/apply_patches.py --working-folder ${CMAKE_CURRENT_BINARY_DIR}/luasocket/src/TARGET_luasocket --patch-folder ${CMAKE_CURRENT_SOURCE_DIR}/patches --strip 1 --copy-folder ${CMAKE_CURRENT_SOURCE_DIR}/copy_over
 	                    CMAKE_ARGS ${PRJ_CMAKE_ARGS}
 	                    TEST_COMMAND make test
